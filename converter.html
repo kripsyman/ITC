@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Unit Converter - ITC Assignments</title>
+<link href="navbar.css" rel="stylesheet">
+<style>
+	dialog::backdrop {
+		background-color: gray;
+		opacity: 0.75;
+	}
+</style>
+</head>
+<body>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li class="dropdown">
+<a href="#" class="dropbtn">Assignments ▼</a>
+<div class="dropdown-content">
+<a href="converter.html">Unit Converter</a>
+<a href="income-tax-calculator.html">Income Tax Calculator</a>
+<a href="nth-factorial-sum-and-average.html">Nth Factorial, Sum and Average</a>
+<a href="simple-payroll.html">Simple Payroll</a>
+</div>
+</li>
+</ul>
+</nav>
+
+<div style = "text-align: center">
+
+<h1>Unit Converter</h1>
+
+<p>
+<label for = "num">Enter your number:</label>
+<input id = "num" name = "num" type = "number">
+</p>
+
+<p>
+<button onclick = "farenToCel()"> Fahrenheit to Celsius </button>
+<button onclick = "celToFaren()"> Celsius to Fahrenheit </button>
+<button onclick = "meterToFeet()"> Meters to Feet </button>
+<button onclick = "feetToMeter()"> Feet to Meters </button>
+</p>
+
+<p>
+<label for = "result">Result: </label>
+<input id="result" name="result" type="number" readonly>
+<label for = "result" id = "unit"></label>
+</p>
+
+<h3 id = "optionChosen"></h3>
+
+<dialog id = "dialog" style = "text-align: right">
+<p>Input a number.</p>
+<button onclick = "dialog.close()"> OK </button>
+</dialog>
+
+</div>
+<script>
+
+function clear() {
+	
+	document.getElementById("result").value = "";
+	document.getElementById("unit").innerHTML = "";
+	document.getElementById("optionChosen").innerHTML = "";
+	const dialog = document.getElementById("dialog");
+	
+}
+
+function farenToCel() {
+
+	clear();
+
+	if (document.getElementById("num").value == "") {
+		dialog.showModal();
+		return;
+	}
+	
+	let num = document.getElementById("num").value*1;
+	
+	let res = (num - 32) * 5 / 9;
+	
+	document.getElementById("optionChosen").innerHTML = "Chosen Option: Fahrenheit to Celsius";
+	document.getElementById("result").value = res;
+	document.getElementById("unit").innerHTML = "°C";
+
+}
+
+function celToFaren() {
+
+	clear();
+
+	if (document.getElementById("num").value == "") {
+		dialog.showModal();
+		return;
+	}
+	
+	let num = document.getElementById("num").value*1;
+	
+	let res = (num * 9 / 5) + 32;
+	
+	document.getElementById("optionChosen").innerHTML = "Chosen Option: Celsius to Fahrenheit";
+	document.getElementById("result").value = res;
+	document.getElementById("unit").innerHTML = "°F";
+
+}
+
+function meterToFeet() {
+
+	clear();
+
+	if (document.getElementById("num").value == "") {
+		dialog.showModal();
+		return;
+	}
+	
+	let num = document.getElementById("num").value*1;
+	
+	let res = num * 3.2808;
+	
+	document.getElementById("optionChosen").innerHTML = "Chosen Option: Meters to Feet";
+	document.getElementById("result").value = res;
+	
+	if (res == 1) {
+		document.getElementById("unit").innerHTML = "foot";
+	} else {
+		document.getElementById("unit").innerHTML = "feet";
+	}
+}
+
+function feetToMeter() {
+
+	clear();
+
+	if (document.getElementById("num").value == "") {
+		dialog.showModal();
+		return;
+	}
+
+	let num = document.getElementById("num").value*1;
+	
+	let res = num * 0.3048;
+	
+	document.getElementById("optionChosen").innerHTML = "Chosen Option: Feet to Meters";
+	document.getElementById("result").value = res;
+	
+	if (res == 1) {
+		document.getElementById("unit").innerHTML = "meter";
+	} else {
+		document.getElementById("unit").innerHTML = "meters";
+	}
+
+}
+</script>
+</body>
+</html>
