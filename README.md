@@ -1,2 +1,1 @@
-# ITC
 ITC Assignments
