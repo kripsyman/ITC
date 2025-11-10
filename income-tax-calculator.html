@@ -1,71 +1,64 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-<title>Income Tax Calculator - ITC Assignments</title>
-<link href="navbar.css" rel="stylesheet">
-</head>
-<body>
-
-<nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li class="dropdown">
-<a href="#" class="dropbtn">Assignments ▼</a>
-<div class="dropdown-content">
-<a href="converter.html">Unit Converter</a>
-<a href="income-tax-calculator.html">Income Tax Calculator</a>
-<a href="nth-factorial-sum-and-average.html">Nth Factorial, Sum and Average</a>
-<a href="simple-payroll.html">Simple Payroll</a>
-</div>
-</li>
-</ul>
-</nav>
-
-<div style = "text-align: center">
-
-<h1>Income Tax Calculator</h1>
-
-<p>
-<label for = "income"> Input Taxable Income: </label>
-<input id = "income" name = "income" type = "number">
-<button onclick = "calculateTax()"> Submit </button>
-</p>
-
-<h2 id = "incomeTax"></h2>
-
-</div>
-<script>
-function calculateTax() {
-	
-	if (document.getElementById("income").value == "") {
-		document.getElementById("incomeTax").innerHTML = "Input a number.";
-		return;
-	}
-	
-	let income = document.getElementById("income").value*1;
-	let tax;
-	
-	if (income > 0 && income <= 250000) {
-		tax = 0;
-	} else if (income > 250000 && income <= 400000) {
-		tax = (income - 250000) * 0.20;
-	} else if (income > 400000 && income <= 800000) {
-		tax = 30000 + ((income - 400000) * 0.25);
-	} else if (income > 800000 && income <= 2000000) {
-		tax = 130000 + ((income - 800000) * 0.30); 
-	} else if (income > 2000000 && income <= 8000000) {
-		tax = 490000 + ((income - 2000000) * 0.32);
-	} else if (income > 8000000) {
-		tax = 2410000 + ((income - 8000000) * 0.35);
-	} else {
-		document.getElementById("incomeTax").innerHTML = "Invalid number.";
-		return;
-	}
-	
-	document.getElementById("incomeTax").innerHTML = "Your income tax is: ₱" + tax;
-}
-
-</script>
-</body>
+	<head>
+		<title>Income Tax Calculator - ITC Assignments</title>
+		<link href="navbar.css" rel="stylesheet">
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown">
+				<a href="#" class="dropbtn">Assignments ▼</a>
+					<div class="dropdown-content">
+						<a href="converter.html">Unit Converter</a>
+						<a href="income-tax-calculator.html">Income Tax Calculator</a>
+						<a href="nth-factorial-sum-and-average.html">Nth Factorial, Sum and Average</a>
+						<a href="simple-payroll.html">Simple Payroll</a>
+					</div>
+				</li>
+			</ul>
+		</nav>
+		<div style = "text-align: center">
+			<p style = "letter-spacing: 10px; font-size: 32px">Income Tax Calculator</p>
+			<p>
+				<label for = "income"> Input Taxable Income: ₱</label>
+				<input id = "income" name = "income" type = "number">
+				<button onclick = "calculateTax()"> Submit </button>
+			</p>
+			<h2 id = "incomeTax"></h2>
+		</div>
+		<script>
+			function calculateTax() {
+				
+				if (document.getElementById("income").value == "") {
+					document.getElementById("incomeTax").innerHTML = "Input a number.";
+					return;
+				}
+				
+				let income = document.getElementById("income").value*1;
+				let tax;
+				
+				if (income > 0 && income <= 250000) {
+					tax = 0;
+				} else if (income > 250000 && income <= 400000) {
+					tax = (income - 250000) * 0.20;
+				} else if (income > 400000 && income <= 800000) {
+					tax = 30000 + ((income - 400000) * 0.25);
+				} else if (income > 800000 && income <= 2000000) {
+					tax = 130000 + ((income - 800000) * 0.30); 
+				} else if (income > 2000000 && income <= 8000000) {
+					tax = 490000 + ((income - 2000000) * 0.32);
+				} else if (income > 8000000) {
+					tax = 2410000 + ((income - 8000000) * 0.35);
+				} else {
+					document.getElementById("incomeTax").innerHTML = "Invalid number.";
+					return;
+				}
+				
+				document.getElementById("incomeTax").innerHTML = "Your income tax is: ₱" + tax;
+			}
+		</script>
+	</body>
 </html> 

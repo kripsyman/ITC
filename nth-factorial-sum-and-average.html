@@ -1,86 +1,78 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-<title>Nth Factorial, Sum and Average - ITC Assignments</title>
-<link href="navbar.css" rel="stylesheet">
-</head>
-<body>
+	<head>
+		<title>Nth Factorial, Sum and Average - ITC Assignments</title>
+		<link href="navbar.css" rel="stylesheet">
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropbtn">Assignments ▼</a>
+					<div class="dropdown-content">
+						<a href="converter.html">Unit Converter</a>
+						<a href="income-tax-calculator.html">Income Tax Calculator</a>
+						<a href="nth-factorial-sum-and-average.html">Nth Factorial, Sum and Average</a>
+						<a href="simple-payroll.html">Simple Payroll</a>
+					</div>
+				</li>
+			</ul>
+		</nav>
+		<div style = "text-align: center">
+			<p style = "letter-spacing: 10px; font-size: 32px">Nth Factorial, Sum and Average</p>
+			<p>
+				<label for = "num">Input a number: </label>
+				<input id = "num" name = "num" type = "number">
+				<button onclick = "Calculate()"> Calculate </button>
+			</p>
+			<h2 id = "fac_label"></h2>
+			<h2 id = "sum_label"></h2>
+			<h2 id = "ave_label"></h2>
+		</div>
+		<script>
+			function Calculate() {
 
-<nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li class="dropdown">
-<a href="#" class="dropbtn">Assignments ▼</a>
-<div class="dropdown-content">
-<a href="converter.html">Unit Converter</a>
-<a href="income-tax-calculator.html">Income Tax Calculator</a>
-<a href="nth-factorial-sum-and-average.html">Nth Factorial, Sum and Average</a>
-<a href="simple-payroll.html">Simple Payroll</a>
-</div>
-</li>
-</ul>
-</nav>
+				document.getElementById("fac_label").innerHTML = "";
+				document.getElementById("sum_label").innerHTML = "";
+				document.getElementById("ave_label").innerHTML = "";
+				
+				if (document.getElementById("num").value == "") {
+					document.getElementById("fac_label").innerHTML = "Input a number.";
+					return;
+				}
 
-<div style = "text-align: center">
+				let number = document.getElementById("num").value*1;
 
-<h1>Nth Factorial, Sum and Average</h1>
+				if (number <= 1) {
+					document.getElementById("fac_label").innerHTML = "Invalid number.";
+					return;
+				}
 
-<p>
-<label for = "num">Input a number: </label>
-<input id = "num" name = "num" type = "number">
-<button onclick = "Calculate()"> Calculate </button>
-</p>
+				let fac = 1, sum = 0, i = 1, j = 1;
+				
+				while (i <= number) {
+					fac *= i;
+					i++;
+				}
 
-<h2 id = "fac_label"></h2>
-<h2 id = "sum_label"></h2>
-<h2 id = "ave_label"></h2>
-
-</div>
-<script>
-
-function Calculate() {
-
-	document.getElementById("fac_label").innerHTML = "";
-	document.getElementById("sum_label").innerHTML = "";
-	document.getElementById("ave_label").innerHTML = "";
-	
-	if (document.getElementById("num").value == "") {
-		document.getElementById("fac_label").innerHTML = "Input a number.";
-		return;
-	}
-
-	let number = document.getElementById("num").value*1;
-
-	if (number <= 1) {
-		document.getElementById("fac_label").innerHTML = "Invalid number.";
-		return;
-	}
-
-	let fac = 1, sum = 0, i = 1, j = 1;
-	
-	while (i <= number) {
-		fac *= i;
-		i++;
-	}
-
-	do {
-		sum += j;
-		j++;
-	} while (j <= number);
-	
-	let ave_sum = 0;
-	for (let k = 1; k <= number; k++) {
-		ave_sum += k;
-	}
-	let ave = ave_sum / number;
-	
-	document.getElementById("fac_label").innerHTML = "The factorial of " + number + " is: " + fac;
-	document.getElementById("sum_label").innerHTML = "The sum of the first " + number + " numbers is: " + sum;
-	document.getElementById("ave_label").innerHTML = "The average of the first " + number + " numbers is: " + ave;
-	
-}
-
-</script>
-</body>
+				do {
+					sum += j;
+					j++;
+				} while (j <= number);
+				
+				let ave_sum = 0;
+				for (let k = 1; k <= number; k++) {
+					ave_sum += k;
+				}
+				let ave = ave_sum / number;
+				
+				document.getElementById("fac_label").innerHTML = "The factorial of " + number + " is: " + fac;
+				document.getElementById("sum_label").innerHTML = "The sum of the first " + number + " numbers is: " + sum;
+				document.getElementById("ave_label").innerHTML = "The average of the first " + number + " numbers is: " + ave;
+				
+			}
+		</script>
+	</body>
 </html>
