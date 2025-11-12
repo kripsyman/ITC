@@ -22,7 +22,7 @@ nav li {
 	display: inline-block; 
 }
 nav li a { 
-	display: block; 
+	display: block;
 	color: white; 
 	padding: 12px 24px; 
 	text-decoration: none; 
@@ -49,3 +49,34 @@ nav li a:hover {
 .dropdown:hover .dropdown-content { 
 	display: block; 
 }
+.leftSplit {
+	display: flex; 
+	justify-content: flex-start; 
+	margin-left: 50px; 
+	gap: 10px;
+}
+::placeholder {
+  font-family: 'Saira', sans-serif;
+}
+table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+    }
+th {
+        background-color: #0078d7;
+        color: white;
+    }
+tr:nth-child(even) {
+        background-color: #f7f7f7;
+    }
+.totals {
+        font-weight: bold;
+        color: #d9534f;
+    }

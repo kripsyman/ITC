@@ -4,13 +4,14 @@
 	<head>
 		<title>Income Tax Calculator - ITC Assignments</title>
 		<link href="navbar.css" rel="stylesheet">
+		<link href="button.css" rel="stylesheet">
 	</head>
 	<body>
 		<nav>
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li class="dropdown">
-				<a href="#" class="dropbtn">Assignments ▼</a>
+					<a href="#" class="dropbtn">Assignments ▼</a>
 					<div class="dropdown-content">
 						<a href="converter.html">Unit Converter</a>
 						<a href="income-tax-calculator.html" style = "font-size: 11px">Income Tax Calculator</a>
@@ -24,16 +25,20 @@
 			<p style = "letter-spacing: 10px; font-size: 32px">Income Tax Calculator</p>
 			<p>
 				<label for = "income"> Input Taxable Income: ₱</label>
-				<input id = "income" name = "income" type = "number">
-				<button onclick = "calculateTax()"> Submit </button>
+				<input id = "income" name = "income" type = "number" placeholder = "0.00">
+				<button class = "Smallerbutton" onclick = "calculateTax()"> Submit </button>
 			</p>
-			<h2 id = "incomeTax"></h2>
+			<h2 id = "incomeTax">Income Tax: ₱0.00</h2>
+			<h2 id = "checkInput"></h2>
 		</div>
 		<script>
 			function calculateTax() {
+			
+				document.getElementById("checkInput").innerHTML = "";
+				document.getElementById("incomeTax").innerHTML = "Income Tax: ₱0.00";
 				
 				if (document.getElementById("income").value == "") {
-					document.getElementById("incomeTax").innerHTML = "Input a number.";
+					document.getElementById("checkInput").innerHTML = "Input a number.";
 					return;
 				}
 				
@@ -53,11 +58,14 @@
 				} else if (income > 8000000) {
 					tax = 2410000 + ((income - 8000000) * 0.35);
 				} else {
-					document.getElementById("incomeTax").innerHTML = "Invalid number.";
+					document.getElementById("incomeTax").innerHTML = "Income Tax: ₱0.00";
+					document.getElementById("checkInput").innerHTML = "Invalid number.";
 					return;
 				}
 				
-				document.getElementById("incomeTax").innerHTML = "Your income tax is: ₱" + tax;
+				tax = tax.toFixed(2);
+				
+				document.getElementById("incomeTax").innerHTML = "Income Tax: ₱" + tax;
 			}
 		</script>
 	</body>
